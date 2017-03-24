@@ -14,7 +14,7 @@ Creating object literals in PHP is not as easy (or elegant) as in JavaScript or 
 
 You can create object literals this way:
 
-``` php
+```php
 $object = new Object([
     "name" => "Fido",
     "barks" => true,
@@ -22,9 +22,35 @@ $object = new Object([
 ]);
 ```
 
+or 
+
+```php
+$object = new Object([
+    "name" => "Fido",
+    "barks" => true,
+    "age" => 10,
+    'say' => function ($self) {
+        if ($self->barks) {
+            return "Woof";
+        }
+        return "";
+    }
+]);
+```
+
+or
+
+```php
+$object = new Object('{
+    "name" : "Fido",
+    "barks" : true,
+    "age" : 10
+}');
+``` 
+
 instead of:
 
-``` php
+```php
 $object = new Object();
 $object->name = 'Fido';
 $object->barks = true;
@@ -47,7 +73,7 @@ This class could be used while the RFC is not implemented.
 
 Via Composer
 
-``` bash
+```bash
 $ composer require josecelano/php-object-literal
 ```
 
@@ -61,7 +87,7 @@ $ composer require josecelano/php-object-literal
 
 I try to follow TDD, as such I use [phpunit](https://phpunit.de) to test this library.
 
-``` bash
+```bash
 $ composer test
 ```
 
