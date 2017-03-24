@@ -57,11 +57,6 @@ $ composer require josecelano/php-object-literal
 - Build from json.
 - Build from json with dynamic keys and values.
 
-## Documentation
-
-Please see the [official documentation](http://moneyphp.org).
-
-
 ## Testing
 
 I try to follow TDD, as such I use [phpunit](https://phpunit.de) to test this library.
