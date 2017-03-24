@@ -18,30 +18,31 @@ final class ObjectLiteralShould extends \PHPUnit_Framework_TestCase
         $this->assertEmpty(get_object_vars($object));
     }
 
+    /**
+     * @test
+     * @dataProvider invalidValuesToCreateObjectFrom
+     * @expectedException InvalidArgumentException
+     * @param $invalidValue
+     */
+    public function
+    should_not_create_an_object_from_invalid_values($invalidValue)
+    {
+        new Object($invalidValue);
+    }
+
     public function invalidValuesToCreateObjectFrom()
     {
+        $anyIntegerGreaterThan0 = 1;
         $invalidJson1 = "{ 'bar': 'baz' }";
         $invalidJson2 = '{ bar: "baz" }';
         $invalidJson3 = '{ bar: "baz", }';
 
         return [
-            [1], // integer > 0
+            [$anyIntegerGreaterThan0],
             [$invalidJson1],
             [$invalidJson2],
             [$invalidJson3],
         ];
-    }
-
-    /**
-     * @test
-     * @dataProvider invalidValuesToCreateObjectFrom
-     * @expectedException InvalidArgumentException
-     * @param $value
-     */
-    public function
-    should_not_create_an_object_from_invalid_values($value)
-    {
-        new Object($value);
     }
 
     /** @test */
